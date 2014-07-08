@@ -25,3 +25,20 @@ angular.module('myApp.controllers', []).
     // write Ctrl here
 
   });
+  
+  function IndexCtrl($scope, $http) {
+  $http.get('/api/posts').
+    success(function(data, status, headers, config) {
+      $scope.posts = data.posts;
+    });
+}
+
+function AddTimeCtrl($scope, $http, $location) {
+  $scope.form = {};
+  $scope.submitPost = function () {
+    $http.post('/api/post', $scope.form).
+      success(function(data) {
+        $location.path('/');
+      });
+  };
+}
