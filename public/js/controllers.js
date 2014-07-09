@@ -27,9 +27,9 @@ angular.module('myApp.controllers', []).
   });
   
   function IndexCtrl($scope, $http) {
-  $http.get('/api/posts').
+  $http.get('/api/timesheets/0').
     success(function(data, status, headers, config) {
-      $scope.posts = data.posts;
+      $scope.timesheet = data.timesheet;
     });
 }
 

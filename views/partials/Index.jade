@@ -1,9 +1,33 @@
-p There are {{posts.length}} posts
-div(ng-repeat='post in posts')
-  h3 {{post.title}}
-  div {{post.text}}
-  a(href='readPost/{{post.id}}') More
-  |  - 
-  a(href='editPost/{{post.id}}') Edit
-  |  - 
-  a(href='deletePost/{{post.id}}') Delete
+p
+	a(href='timesheets/0') <
+
+p {{timesheet.startOn}} - {{timesheet.endOn}}
+
+p
+	a(href='timesheets/1') >
+
+	
+p {{timesheet.status}}
+p {{timesheet.dueOn}}
+
+P
+	a(href='approvals/{{timesheet.id}}') See all Approvers
+	a(href='timesheets/') See all timesheets
+P
+	ul
+		li
+			{{timesheet.totalBillable}} Billable
+		li
+			{{timesheet.totalHours}} Hours
+		li
+			{{timesheet.totalOvertime}} Overtime
+		li
+			{{timesheet.totalTimeOff}} Time Off		
+
+
+div(ng-repeat='activity in timesheet.activities')
+	h4 {{activity.name}}
+	a(href='editPost/{{activity.id}}') Edit
+	a(href='deletePost/{{activity.id}}') Delete
+  
+div(ng-repeat='comment in timesheet.comments')
